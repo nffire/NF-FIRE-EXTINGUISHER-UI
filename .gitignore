@@ -1,0 +1,83 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+*.code-workspace
+.settings/
+*.vim
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Cache & Temporary Files
+.cache/
+*.tmp
+*.temp
+*.log
+
+# OS-specific
+.Thumbs.db
+.AppleDouble
+.LSOverride
+*.log
+
+# IDE Settings
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Backup Files
+*.bak
+*.backup
+*.orig
+
+# Compiled / Build Files
+*.min.js
+*.min.css
+*.map
+
+# macOS
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.VolumeIcon.icns
+
+# Windows
+$RECYCLE.BIN/
+ehthumbs.db
+Thumbs.db
+
+# Project-specific
+# Add large video files if needed
+# assets/VIDEO/*.mp4
+# assets/VIDEO/*.webm
+# assets/VIDEO/*.avi
+
+# Local development files
+local-config.js
+config.local.js
