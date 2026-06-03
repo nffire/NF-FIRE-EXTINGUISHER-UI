@@ -35,7 +35,7 @@ NF Fire Extinguisher Admin Center is a lightweight static admin UI for managing 
 - Contact: harshadteli697@gmail.com
 
 ## Developer Certificates from NF Fire Extinguisher
-#Certificates is coming Soon ok 
+#Certificates is coming Soon 
 
 ---
 Maintainer and System Addministrator: Harshad Teli
