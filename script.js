@@ -43,32 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // Chatbot Elements
-    const chatbotToggleBtn = document.getElementById('chatbot-toggle');
-    const chatbotWindow = document.getElementById('chatbot-window');
-    const closeChatBtn = document.getElementById('close-chat');
-    const chatBody = document.getElementById('chat-body');
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-    
-    // Mobile Menu Elements
+    // ===== MOBILE MENU TOGGLE =====
     const mobileMenuBtn = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
 
-    // Toggle Mobile Menu
     if (mobileMenuBtn && navLinks) {
-
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Toggle open class to animate bars into X
             mobileMenuBtn.classList.toggle('open');
             if (navbar) {
                 navbar.classList.toggle('menu-open');
             }
         });
 
-        // Close menu and reset icon when a nav link is clicked
+        // Close menu when a nav link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -80,15 +68,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Toggle Chatbot Window
-    chatbotToggleBtn.addEventListener('click', () => {
+    // Chatbot Elements
+    const chatbotToggleBtn = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const closeChatBtn = document.getElementById('close-chat');
+    const chatBody = document.getElementById('chat-body');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatBackdrop = document.getElementById('chatbot-backdrop');
+
+    // Helper: open chatbot
+    function openChatbot() {
         chatbotWindow.classList.remove('hidden');
         chatbotToggleBtn.style.display = 'none';
-    });
+        if (chatBackdrop) chatBackdrop.classList.add('active');
+        // Focus input after animation
+        setTimeout(() => chatInput && chatInput.focus(), 350);
+    }
 
-    closeChatBtn.addEventListener('click', () => {
+    // Helper: close chatbot
+    function closeChatbot() {
         chatbotWindow.classList.add('hidden');
         chatbotToggleBtn.style.display = 'flex';
+        if (chatBackdrop) chatBackdrop.classList.remove('active');
+    }
+
+    // Toggle Chatbot Window
+    chatbotToggleBtn.addEventListener('click', openChatbot);
+    closeChatBtn.addEventListener('click', closeChatbot);
+
+    // Close chatbot when tapping the dark backdrop (mobile)
+    if (chatBackdrop) {
+        chatBackdrop.addEventListener('click', closeChatbot);
+    }
+
+    // Close chatbot with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !chatbotWindow.classList.contains('hidden')) {
+            closeChatbot();
+        }
     });
 
     // Chatbot Logic
