@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="[https://nffire.github.io/NF-FIRE-EXTINGUISHER/](https://nffire.github.io/NF-FIRE-EXTINGUISHER-UI/)" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+  <a href="https://nffire.github.io/NF-FIRE-EXTINGUISHER-UI/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
     <span style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:linear-gradient(90deg,#ff416c,#ff4b2b);color:#fff;border-radius:999px;font-weight:700;box-shadow:0 8px 24px rgba(255,75,43,0.25);transition:transform .12s ease-in-out;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));">
         <path d="M5 3v18l14-9L5 3z" fill="white"/>
