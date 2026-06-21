@@ -78,128 +78,149 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBackdrop = document.getElementById('chatbot-backdrop');
 
     // Helper: open chatbot
-    function openChatbot() {
-        chatbotWindow.classList.remove('hidden');
-        chatbotToggleBtn.style.display = 'none';
-        if (chatBackdrop) chatBackdrop.classList.add('active');
-        // Focus input after animation
-        setTimeout(() => chatInput && chatInput.focus(), 350);
-    }
-
-    // Helper: close chatbot
-    function closeChatbot() {
-        chatbotWindow.classList.add('hidden');
-        chatbotToggleBtn.style.display = 'flex';
-        if (chatBackdrop) chatBackdrop.classList.remove('active');
-    }
-
-    // Toggle Chatbot Window
-    chatbotToggleBtn.addEventListener('click', openChatbot);
-    closeChatBtn.addEventListener('click', closeChatbot);
-
-    // Close chatbot when tapping the dark backdrop (mobile)
-    if (chatBackdrop) {
-        chatBackdrop.addEventListener('click', closeChatbot);
-    }
-
-    // Close chatbot with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !chatbotWindow.classList.contains('hidden')) {
-            closeChatbot();
+    if (chatbotToggleBtn && chatbotWindow && closeChatBtn && chatBody && chatInput && sendBtn) {
+        function openChatbot() {
+            chatbotWindow.classList.remove('hidden');
+            chatbotToggleBtn.style.display = 'none';
+            if (chatBackdrop) chatBackdrop.classList.add('active');
+            // Focus input after animation
+            setTimeout(() => chatInput && chatInput.focus(), 350);
         }
-    });
 
-    // Chatbot Logic
-    const botResponses = {
-        "hello": "Hi there! Welcome to NF Fire Safety & Security Services. How can we protect you today?",
-        "hi": "Hello! How can I help you?",
-        "price": "Our prices vary depending on the model and size. Please use the contact buttons to get a detailed quote.",
-        "working": "Our cylinders use an advanced rapid response mechanism. You can watch the video in the 'How It Works' section!",
-        "manufacturing": "We are ISO 9001:2015 certified. Our manufacturing process ensures top quality. Check out our video in the Manufacturing section.",
-        "contact": "You can reach us via WhatsApp, Email, or Phone using the buttons on the bottom left.",
-        "default": "I'm a simple bot. Please try asking about our 'working', 'manufacturing', 'price', or 'contact' us directly!"
-    };
-
-    function appendMessage(message, sender, isTyping = false) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        if (sender === 'bot') {
-            messageDiv.classList.add('bot-message');
-        } else {
-            messageDiv.classList.add('user-message');
+        // Helper: close chatbot
+        function closeChatbot() {
+            chatbotWindow.classList.add('hidden');
+            chatbotToggleBtn.style.display = 'flex';
+            if (chatBackdrop) chatBackdrop.classList.remove('active');
         }
-        
-        const p = document.createElement('p');
-        messageDiv.appendChild(p);
-        chatBody.appendChild(messageDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
 
-        if (isTyping) {
-            let i = 0;
-            const typingInterval = setInterval(() => {
-                if (i < message.length) {
-                    p.innerHTML += message.charAt(i);
-                    i++;
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                } else {
-                    clearInterval(typingInterval);
-                }
-            }, 30);
-        } else {
-            p.innerHTML = message;
+        // Toggle Chatbot Window
+        chatbotToggleBtn.addEventListener('click', openChatbot);
+        closeChatBtn.addEventListener('click', closeChatbot);
+
+        // Close chatbot when tapping the dark backdrop (mobile)
+        if (chatBackdrop) {
+            chatBackdrop.addEventListener('click', closeChatbot);
         }
-    }
 
-    function speakText(text) {
-        if ('speechSynthesis' in window) {
-            // Cancel any ongoing speech
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.rate = 1.0;
-            utterance.pitch = 1.0;
-            utterance.volume = 1.0;
-            window.speechSynthesis.speak(utterance);
-        } else {
-            console.log("Text-to-Speech not supported in this browser.");
-        }
-    }
-
-    function handleUserInput() {
-        const userText = chatInput.value.trim().toLowerCase();
-        if (userText === "") return;
-
-        // Append user message
-        appendMessage(chatInput.value, 'user');
-        chatInput.value = '';
-
-        // Simulate thinking time
-        setTimeout(() => {
-            let response = botResponses["default"];
-            
-            // Simple keyword matching
-            for (const key in botResponses) {
-                if (userText.includes(key)) {
-                    response = botResponses[key];
-                    break;
-                }
+        // Close chatbot with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !chatbotWindow.classList.contains('hidden')) {
+                closeChatbot();
             }
+        });
 
-            // Append bot message with typing effect
-            appendMessage(response, 'bot', true);
-            
-            // Speak the response
-            speakText(response);
-            
-        }, 600);
-    }
+        // Auto-open the popup modal on page load after 1 second
+        setTimeout(openChatbot, 1000);
 
-    sendBtn.addEventListener('click', handleUserInput);
-    
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleUserInput();
+        // Chatbot Logic
+        const botResponses = {
+            "hello": "Hello! Welcome to Dhanlaxmi Enterprise. We are specialists in all petrol pump safety materials, fire extinguishers, and emergency safety systems. How can we help you today?",
+            "hi": "Hello! Welcome to Dhanlaxmi Enterprise. How can we assist you with petrol pump safety materials today?",
+            "hey": "Hi there! Welcome to Dhanlaxmi Enterprise. What safety equipment are you looking for today?",
+            "catalog": "You can view or download our product catalog by clicking the 'Visit our Product Catalog' button at the top of this chat. We supply high-grade certified extinguishers, dispensing nozzles, hazard signages, tank valves, and spill kits.",
+            "product": "We offer a complete range of petrol pump safety materials: certified extinguishers, dispensing nozzles, fuel hoses, safety signages, tank fittings, spill kits, and flameproof lights. Click 'Visit our Product Catalog' above for more details.",
+            "nozzle": "We supply top-grade petrol and diesel dispensing nozzles, fuel transfer hoses, and breakaway couplings designed to prevent leaks and accidents at fuel stations.",
+            "hose": "We supply top-grade petrol and diesel dispensing nozzles, fuel transfer hoses, and breakaway couplings designed to prevent leaks and accidents at fuel stations.",
+            "extinguisher": "We provide ISO/ISI-certified DCP, CO2, Foam, and Clean Agent fire extinguishers, specially calibrated for fuel station fires and electrical safety.",
+            "fire": "We provide ISO/ISI-certified DCP, CO2, Foam, and Clean Agent fire extinguishers, specially calibrated for fuel station fires and electrical safety.",
+            "cylinder": "We provide ISO/ISI-certified DCP, CO2, Foam, and Clean Agent fire extinguishers, specially calibrated for fuel station fires and electrical safety.",
+            "signage": "Dhanlaxmi Enterprise offers luminous warning signs, flameproof LED sign boards, speed breakers, and safety traffic cones to manage station safety.",
+            "sign": "Dhanlaxmi Enterprise offers luminous warning signs, flameproof LED sign boards, speed breakers, and safety traffic cones to manage station safety.",
+            "tank": "Our premium underground tank fittings include under-pump shear valves, flame arrestors, check valves, and safety dip rods to prevent vapor hazards.",
+            "valve": "Our premium underground tank fittings include under-pump shear valves, flame arrestors, check valves, and safety dip rods to prevent vapor hazards.",
+            "spill": "We provide emergency fuel spill response kits, absorbent pads, chemical spill containment tools, and heavy-duty fire blankets for station emergencies.",
+            "kit": "We provide emergency fuel spill response kits, absorbent pads, chemical spill containment tools, and heavy-duty fire blankets for station emergencies.",
+            "light": "We offer intrinsically safe, explosion-proof LED canopy lights, junction boxes, and flameproof manual call point fire alarms.",
+            "alarm": "We offer intrinsically safe, explosion-proof LED canopy lights, junction boxes, and flameproof manual call point fire alarms.",
+            "price": "For custom pricing, bulk orders, and official quotes on petrol pump materials, please click the WhatsApp button on the bottom left to chat with our sales team, or call us at +91 7972701472!",
+            "cost": "For custom pricing, bulk orders, and official quotes on petrol pump materials, please click the WhatsApp button on the bottom left to chat with our sales team, or call us at +91 7972701472!",
+            "quote": "For custom pricing, bulk orders, and official quotes on petrol pump materials, please click the WhatsApp button on the bottom left to chat with our sales team, or call us at +91 7972701472!",
+            "contact": "You can reach Dhanlaxmi Enterprise via Phone at +91 7972701472, WhatsApp, or Email using the contact floating buttons on the bottom left.",
+            "default": "I'm the safety assistant for Dhanlaxmi Enterprise. You can ask me about 'catalog', 'nozzles', 'extinguishers', 'signage', 'spill kits', 'tank fittings', 'pricing', or 'contact' details."
+        };
+
+        function appendMessage(message, sender, isTyping = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            if (sender === 'bot') {
+                messageDiv.classList.add('bot-message');
+            } else {
+                messageDiv.classList.add('user-message');
+            }
+            
+            const p = document.createElement('p');
+            messageDiv.appendChild(p);
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            if (isTyping) {
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    if (i < message.length) {
+                        p.innerHTML += message.charAt(i);
+                        i++;
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 30);
+            } else {
+                p.innerHTML = message;
+            }
         }
-    });
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.log("Text-to-Speech not supported in this browser.");
+            }
+        }
+
+        function handleUserInput() {
+            const userText = chatInput.value.trim().toLowerCase();
+            if (userText === "") return;
+
+            // Append user message
+            appendMessage(chatInput.value, 'user');
+            chatInput.value = '';
+
+            // Simulate thinking time
+            setTimeout(() => {
+                let response = botResponses["default"];
+                
+                // Simple keyword matching
+                for (const key in botResponses) {
+                    if (userText.includes(key)) {
+                        response = botResponses[key];
+                        break;
+                    }
+                }
+
+                // Append bot message with typing effect
+                appendMessage(response, 'bot', true);
+                
+                // Speak the response
+                speakText(response);
+                
+            }, 600);
+        }
+
+        sendBtn.addEventListener('click', handleUserInput);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
+            }
+        });
+    }
 });
 
 // ===== GLOBAL VIDEO MUTE TOGGLE =====
