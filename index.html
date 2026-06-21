@@ -406,29 +406,49 @@
     <div id="chatbot-backdrop" class="chatbot-backdrop"></div>
 
     <!-- Chatbot Toggle Button -->
-    <button id="chatbot-toggle" class="chatbot-toggle-btn">
-        <i class="fa-solid fa-message"></i>
+    <button id="chatbot-toggle" class="chatbot-toggle-btn" title="Dhanlaxmi Enterprise Safety Support">
+        <i class="fa-solid fa-gas-pump"></i>
     </button>
 
-    <!-- Chatbot Window -->
+    <!-- Chatbot Window (Dhanlaxmi Enterprise Popup Modal) -->
     <div id="chatbot-window" class="chatbot-container hidden">
         <div class="chat-header">
             <div class="chat-header-title">
-                <img src="assets/IMAGES/Logo.jpg" alt="Bot Logo" class="chat-logo">
+                <div class="chat-logo-wrapper">
+                    <i class="fa-solid fa-gas-pump"></i>
+                </div>
                 <div>
-                    <h3>NF Support</h3>
-                    <span class="status">Online</span>
+                    <h3>Dhanlaxmi Enterprise</h3>
+                    <span class="status"><span class="pulse-dot"></span>Online Support</span>
                 </div>
             </div>
-            <button id="close-chat" class="close-btn"><i class="fa-solid fa-times"></i></button>
+            <button id="close-chat" class="close-btn" title="Close"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="chat-body" id="chat-body">
             <div class="message bot-message">
-                <p>Hello! Welcome to NF Fire Safety & Security Services. How can I assist you today?</p>
+                <div class="bot-welcome-content">
+                    <p class="welcome-intro">Welcome to <strong>Dhanlaxmi Enterprise</strong>, your trusted partner for complete petrol pump safety solutions. We specialize in supplying certified fire safety equipment and station maintenance materials.</p>
+                    
+                    <h4 class="materials-title">Our Petrol Pump Materials:</h4>
+                    <ul class="materials-list">
+                        <li><i class="fa-solid fa-fire-extinguisher"></i> <span><strong>Fire Extinguishers:</strong> DCP, CO2, Foam, & Clean Agent cylinders.</span></li>
+                        <li><i class="fa-solid fa-shower"></i> <span><strong>Dispensing Hoses & Nozzles:</strong> High-grade fuel transfer hoses.</span></li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Safety Signages:</strong> Luminous warning boards & traffic cones.</span></li>
+                        <li><i class="fa-solid fa-shield-halved"></i> <span><strong>Tank Safety Fittings:</strong> Shear valves, flame arrestors, & dip rods.</span></li>
+                        <li><i class="fa-solid fa-kit-medical"></i> <span><strong>Spill Response Kits:</strong> Chemical absorbents & safety blankets.</span></li>
+                        <li><i class="fa-solid fa-lightbulb"></i> <span><strong>Flameproof Lights:</strong> Explosion-proof LED fittings & alarms.</span></li>
+                    </ul>
+
+                    <div class="catalog-btn-container">
+                        <a href="https://wa.me/917972701472?text=Hello%20Dhanlaxmi%20Enterprise,%20I%20would%20like%20to%20request%20your%20Product%20Catalog%20for%20petrol%20pump%20materials." target="_blank" class="catalog-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Visit our Product Catalog
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Type your message...">
+            <input type="text" id="chat-input" placeholder="Ask about petrol pump safety...">
             <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
