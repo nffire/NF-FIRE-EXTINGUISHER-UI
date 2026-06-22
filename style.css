@@ -1435,28 +1435,31 @@ h1, h2, h3, h4 {
     }
     
     .seal-image-container {
-        width: 220px;
-        height: 220px;
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
     }
     
     .seal-main-img {
-        width: 140px;
-        height: 140px;
+        height: 260px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
     }
     
     .ring-1 {
-        width: 190px;
-        height: 190px;
+        width: 260px;
+        height: 260px;
     }
     
     .ring-2 {
-        width: 210px;
-        height: 210px;
+        width: 280px;
+        height: 280px;
     }
     
     .ring-3 {
-        width: 165px;
-        height: 165px;
+        width: 230px;
+        height: 230px;
     }
     
     .seal-title {
@@ -1835,6 +1838,234 @@ h1, h2, h3, h4 {
         max-height: 260px;
     }
 }
+
+/* ===== FOAM SUPPRESSION SYSTEMS SECTION ===== */
+.foam-section {
+    padding: 6rem 5%;
+    background-color: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.foam-container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* Video Player on Top — showing the video completely with no crop */
+.foam-video-wrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
+}
+
+.foam-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Content Card Below — elegant dark flat card */
+.foam-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Badge */
+.foam-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(211, 47, 47, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    color: #ff8a80;
+    font-size: 0.80rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    border-radius: 30px;
+    margin-bottom: 1.2rem;
+}
+
+/* Main heading */
+.foam-card h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+}
+
+/* Sub-title */
+.foam-subtitle {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ff8a80;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.4px;
+}
+
+/* Description */
+.foam-desc {
+    font-size: 0.93rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.foam-desc strong {
+    color: #ffffff;
+}
+
+/* Feature list */
+.foam-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.foam-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.foam-feat-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(211, 47, 47, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.35);
+    color: #ff8a80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-top: 2px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.foam-features li:hover .foam-feat-icon {
+    background: rgba(211, 47, 47, 0.35);
+    transform: rotate(5deg) scale(1.05);
+}
+
+.foam-feat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.foam-feat-text strong {
+    font-size: 0.94rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.foam-feat-text span {
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
+.foam-card .cta-button {
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+/* ===== FOAM SECTION — RESPONSIVE ===== */
+
+/* Tablet landscape */
+@media (max-width: 992px) {
+    .foam-card {
+        padding: 2.5rem 2rem;
+    }
+    .foam-card h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .foam-section {
+        padding: 4rem 1.2rem;
+    }
+
+    .foam-container {
+        gap: 1.8rem;
+    }
+
+    .foam-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .foam-card h2 {
+        font-size: 1.65rem;
+    }
+
+    .foam-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .foam-desc {
+        font-size: 0.88rem;
+    }
+
+    .foam-features {
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .foam-card {
+        padding: 1.8rem 1rem;
+    }
+    .foam-card h2 {
+        font-size: 1.4rem;
+    }
+    .foam-desc {
+        font-size: 0.84rem;
+    }
+    .foam-feat-text strong {
+        font-size: 0.88rem;
+    }
+    .foam-feat-text span {
+        font-size: 0.80rem;
+    }
+    .foam-features {
+        gap: 0.7rem;
+    }
+    .foam-feat-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+}
+
 
 /* ===== SAFETY TRAINING SECTION ===== */
 .training-section {
